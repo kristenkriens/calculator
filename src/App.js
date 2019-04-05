@@ -5,13 +5,15 @@ import Key from './components/Key';
 
 class App extends Component {
   state = {
-    displayValue: '0',
+    value: 0,
+    displayValue: 0,
     readyToOperate: false,
     operator: null
   }
 
   handleClear = () => {
     this.setState({
+      value: 0,
       displayValue: '0',
       operator: null
     });
@@ -27,7 +29,7 @@ class App extends Component {
       });
     } else {
       this.setState({
-        displayValue: this.state.displayValue === '0' ? number : this.state.displayValue + number
+        displayValue: this.state.displayValue === '0' || this.state.displayValue === 0 ? number : this.state.displayValue + number
       });
     }
   }
@@ -61,7 +63,39 @@ class App extends Component {
   handleOperatorClick = (operator) => {
     this.setState({
       readyToOperate: true,
-      operator: operator
+      operator: operator,
+      value: this.state.displayValue
+    });
+
+    this.handleEqualsClick();
+  }
+
+  handleEqualsClick = () => {
+    const prevValue = parseFloat(this.state.value);
+    const currentValue = parseFloat(this.state.displayValue);
+
+    let total = '';
+    switch(this.state.operator) {
+      case '/':
+        total = prevValue / currentValue;
+        break;
+      case '*':
+        total = prevValue * currentValue;
+        break;
+      case '+':
+        total = prevValue + currentValue;
+        break;
+      case '-':
+        total = prevValue - currentValue;
+        break;
+      default:
+        return false;
+    }
+
+    this.setState({
+      readyToOperate: true,
+      displayValue: total,
+      value: total
     });
   }
 
@@ -97,7 +131,7 @@ class App extends Component {
               <Key value="×" click={() => this.handleOperatorClick('*')} />
               <Key value="-" click={() => this.handleOperatorClick('-')} />
               <Key value="+" click={() => this.handleOperatorClick('+')} />
-              <Key value="=" special="equals" />
+              <Key value="=" special="equals" click={() => this.handleEqualsClick()} />
             </div>
           </div>
         </div>
