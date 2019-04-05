@@ -5,15 +5,15 @@ import Key from './components/Key';
 
 class App extends Component {
   state = {
-    value: 0,
-    displayValue: 0,
+    value: null,
+    displayValue: '0',
     readyToOperate: false,
     operator: null
   }
 
   handleClear = () => {
     this.setState({
-      value: 0,
+      value: null,
       displayValue: '0',
       operator: null
     });
@@ -104,9 +104,6 @@ class App extends Component {
 
     return (
       <div className="calculator">
-        <pre>
-          {JSON.stringify(this.state, null, 2)}
-        </pre>
         <Display value={this.state.displayValue} />
         <div className="keypad">
           <div className="keypad-left">
