@@ -3,7 +3,10 @@
 @import 'calculator.scss';
 @import 'key.scss';
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 body {
+  font-family: 'Montserrat', sans-serif;
   background-color: $bg;
   padding: 30px 15px;
 }
