@@ -1,0 +1,45 @@
+.key {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 25px;
+  outline: none;
+  transition: 300ms all ease-in-out;
+
+  &-wide {
+    width: 140px;
+  }
+
+  &-equals {
+    background-color: $equals !important;
+
+    &:hover, &:active, &:focus {
+      background-color: darken($equals, 5) !important;
+    }
+  }
+
+  .keypad-numbers & {
+    background-color: $number;
+
+    &:hover, &:active, &:focus {
+      background-color: darken($number, 3.5);
+    }
+  }
+
+  .keypad-functions & {
+    background-color: $function;
+
+    &:hover, &:active, &:focus {
+      background-color: darken($function, 5);
+    }
+  }
+
+  .keypad-operators & {
+    background-color: $operator;
+
+    &:hover, &:active, &:focus {
+      background-color: darken($operator, 5);
+    }
+  }
+}
