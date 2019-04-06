@@ -67,10 +67,6 @@ class App extends Component {
       value: this.state.displayValue
     });
 
-    this.handleEqualsClick();
-  }
-
-  handleEqualsClick = () => {
     const prevValue = parseFloat(this.state.value);
     const currentValue = parseFloat(this.state.displayValue);
 
@@ -93,7 +89,6 @@ class App extends Component {
     }
 
     this.setState({
-      readyToOperate: true,
       displayValue: total,
       value: total
     });
@@ -128,7 +123,7 @@ class App extends Component {
               <Key value="×" click={() => this.handleOperatorClick('*')} />
               <Key value="-" click={() => this.handleOperatorClick('-')} />
               <Key value="+" click={() => this.handleOperatorClick('+')} />
-              <Key value="=" special="equals" click={() => this.handleEqualsClick()} />
+              <Key value="=" special="equals" click={() => this.handleOperatorClick('=')} />
             </div>
           </div>
         </div>

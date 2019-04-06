@@ -4,9 +4,7 @@ const Display = props => {
   const { value } = props;
 
   return (
-    <div className="display">
-      {value}
-    </div>
+    <input className="display" value={value} />
   )
 }
 
