@@ -19,15 +19,15 @@
     }
   }
 
-  .keypad-numbers & {
-    background-color: $number;
+  .digit-keys & {
+    background-color: $digit;
 
     &:hover, &:active, &:focus {
-      background-color: darken($number, 3.5);
+      background-color: darken($digit, 3.5);
     }
   }
 
-  .keypad-functions & {
+  .function-keys & {
     background-color: $function;
 
     &:hover, &:active, &:focus {
@@ -35,7 +35,7 @@
     }
   }
 
-  .keypad-operators & {
+  .operator-keys & {
     background-color: $operator;
 
     &:hover, &:active, &:focus {

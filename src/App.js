@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import Display from './components/Display';
-import Key from './components/Key';
+import DigitKeys from './components/DigitKeys';
+import FunctionKeys from './components/FunctionKeys';
+import OperatorKeys from './components/OperatorKeys';
 
 class App extends Component {
   state = {
@@ -11,7 +13,7 @@ class App extends Component {
     operator: null
   }
 
-  handleClear = () => {
+  handleClearClick = () => {
     this.setState({
       value: null,
       displayValue: '0',
@@ -48,7 +50,7 @@ class App extends Component {
     }
   }
 
-  handleSwitchPosNegClick = () => {
+  handleSignSwitchClick = () => {
     this.setState({
       displayValue: this.state.displayValue * -1
     });
@@ -95,36 +97,23 @@ class App extends Component {
   }
 
   render() {
-    const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3];
-
     return (
       <div className="calculator">
         <Display value={this.state.displayValue} />
         <div className="keypad">
           <div className="keypad-left">
-            <div className="keypad-functions">
-              <Key value="AC" click={() => this.handleClear()} />
-              <Key value="±" click={() => this.handleSwitchPosNegClick()} />
-              <Key value="%" click={() => this.handlePercentClick()} />
-            </div>
-            <div className="keypad-numbers">
-              {numbers.map((number) => {
-                return (
-                  <Key key={number} value={number} click={() => this.handleNumberClick(number)} />
-                )
-              })}
-              <Key value="0" special="wide" click={() => this.handleNumberClick(0)} />
-              <Key value="." click={() => this.handleDotClick()} />
-            </div>
+            <FunctionKeys
+              clearClick={this.handleClearClick}
+              signSwitchClick={this.handleSignSwitchClick}
+              percentClick={this.handlePercentClick}
+            />
+            <DigitKeys
+              numberClick={this.handleNumberClick}
+              dotClick={this.handleDotClick}
+            />
           </div>
           <div className="keypad-right">
-            <div className="keypad-operators">
-              <Key value="÷" click={() => this.handleOperatorClick('/')} />
-              <Key value="×" click={() => this.handleOperatorClick('*')} />
-              <Key value="-" click={() => this.handleOperatorClick('-')} />
-              <Key value="+" click={() => this.handleOperatorClick('+')} />
-              <Key value="=" special="equals" click={() => this.handleOperatorClick('=')} />
-            </div>
+            <OperatorKeys operatorClick={this.handleOperatorClick} />
           </div>
         </div>
       </div>
