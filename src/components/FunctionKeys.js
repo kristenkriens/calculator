@@ -7,9 +7,9 @@ const FunctionKeys = props => {
 
   return (
     <div className="function-keys">
-      <Key value="AC" type="function" click={clearClick} />
-      <Key value="±" type="function" click={signSwitchClick} />
-      <Key value="%" type="function" click={percentClick} />
+      <Key value="AC" click={clearClick} />
+      <Key value="±" click={signSwitchClick} />
+      <Key value="%" click={percentClick} />
     </div>
   )
 }
