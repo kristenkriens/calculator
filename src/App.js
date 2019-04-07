@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import Display from './components/Display';
-import DigitKeys from './components/DigitKeys';
 import FunctionKeys from './components/FunctionKeys';
+import DigitKeys from './components/DigitKeys';
 import OperatorKeys from './components/OperatorKeys';
 
 class App extends Component {
