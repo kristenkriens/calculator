@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Display from './components/Display';
+import Display from './containers/Display';
 import FunctionKeys from './components/FunctionKeys';
 import DigitKeys from './components/DigitKeys';
 import OperatorKeys from './components/OperatorKeys';
