@@ -4,18 +4,25 @@ import Display from './components/Display';
 import FunctionKeys from './components/FunctionKeys';
 import DigitKeys from './components/DigitKeys';
 import OperatorKeys from './components/OperatorKeys';
+import VariableKeys from './components/VariableKeys';
 
 class App extends Component {
   state = {
-    value: null,
-    displayValue: '0',
+    value: 0,
+    displayValue: 0,
     readyToOperate: false,
-    operator: null
+    operator: null,
+    variableValues: {
+      v1: 0,
+      v2: 0,
+      v3: 0,
+      v4: 0
+    }
   }
 
   handleClearClick = () => {
     this.setState({
-      value: null,
+      value: 0,
       displayValue: '0',
       operator: null
     });
@@ -96,24 +103,47 @@ class App extends Component {
     });
   }
 
+  handleSaveVariableClick = (variable) => {
+    this.setState({
+      variableValues: {
+        ...this.state.variableValues,
+        [variable]: this.state.displayValue
+      }
+    });
+  }
+
+  handleUseVariableClick = (variable) => {
+    this.setState({
+      displayValue: this.state.variableValues[variable]
+    });
+  }
+
   render() {
     return (
       <div className="calculator">
         <Display value={this.state.displayValue} />
         <div className="keypad">
-          <div className="keypad-left">
-            <FunctionKeys
-              clearClick={this.handleClearClick}
-              signSwitchClick={this.handleSignSwitchClick}
-              percentClick={this.handlePercentClick}
-            />
-            <DigitKeys
-              numberClick={this.handleNumberClick}
-              dotClick={this.handleDotClick}
-            />
+          <div className="keypad-top">
+            <div className="keypad-left">
+              <FunctionKeys
+                clearClick={this.handleClearClick}
+                signSwitchClick={this.handleSignSwitchClick}
+                percentClick={this.handlePercentClick}
+              />
+              <DigitKeys
+                numberClick={this.handleNumberClick}
+                dotClick={this.handleDotClick}
+              />
+            </div>
+            <div className="keypad-right">
+              <OperatorKeys operatorClick={this.handleOperatorClick} />
+            </div>
           </div>
-          <div className="keypad-right">
-            <OperatorKeys operatorClick={this.handleOperatorClick} />
+          <div className="keypad-bottom">
+            <VariableKeys
+              saveVariableClick={this.handleSaveVariableClick}
+              useVariableClick={this.handleUseVariableClick}
+            />
           </div>
         </div>
       </div>

@@ -11,6 +11,10 @@
     width: 140px;
   }
 
+  &-full {
+    width: 280px;
+  }
+
   &-equals {
     background-color: $equals !important;
 
@@ -40,6 +44,14 @@
 
     &:hover, &:active, &:focus {
       background-color: darken($operator, 5);
+    }
+  }
+
+  .variable-keys & {
+    background-color: $variable;
+
+    &:hover, &:active, &:focus {
+      background-color: darken($variable, 5);
     }
   }
 }

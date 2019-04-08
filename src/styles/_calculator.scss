@@ -21,6 +21,11 @@
 
   .keypad {
     display: flex;
+    flex-wrap: wrap;
+
+    &-top, &-bottom {
+      display: flex;
+    }
 
     &-left {
       width: 75%;
