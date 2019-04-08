@@ -13,11 +13,13 @@ class App extends Component {
     readyToOperate: false,
     operator: null,
     variableValues: {
-      v1: 0,
-      v2: 0,
-      v3: 0,
-      v4: 0
-    }
+      var1: 0,
+      var2: 0,
+      var3: 0,
+      var4: 0
+    },
+    variable: null,
+    saveUseVisible: false
   }
 
   handleClearClick = () => {
@@ -103,18 +105,27 @@ class App extends Component {
     });
   }
 
+  handleSetVariableClick = (variable) => {
+    this.setState({
+      variable: variable,
+      saveUseVisible: true
+    })
+  }
+
   handleSaveVariableClick = (variable) => {
     this.setState({
       variableValues: {
         ...this.state.variableValues,
         [variable]: this.state.displayValue
-      }
+      },
+      saveUseVisible: false
     });
   }
 
   handleUseVariableClick = (variable) => {
     this.setState({
-      displayValue: this.state.variableValues[variable]
+      displayValue: this.state.variableValues[variable],
+      saveUseVisible: false
     });
   }
 
@@ -141,6 +152,9 @@ class App extends Component {
           </div>
           <div className="keypad-bottom">
             <VariableKeys
+              variable={this.state.variable}
+              saveUseVisible={this.state.saveUseVisible}
+              setVariableClick={this.handleSetVariableClick}
               saveVariableClick={this.handleSaveVariableClick}
               useVariableClick={this.handleUseVariableClick}
             />

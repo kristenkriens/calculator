@@ -49,6 +49,7 @@
 
   .variable-keys & {
     background-color: $variable;
+    font-size: 18px;
 
     &:hover, &:active, &:focus {
       background-color: darken($variable, 5);
