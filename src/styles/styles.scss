@@ -5,11 +5,19 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
+html, body, #root {
+  height: 100%;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: $bg;
-  padding: 30px 15px;
   color: $text;
+}
+
+#root {
+  display: flex;
+  padding: 30px 15px;
 }
 
 .hidden {

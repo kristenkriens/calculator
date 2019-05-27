@@ -9,6 +9,10 @@
   font-size: 25px;
   box-shadow: 5px 5px 25px 5px rgba(0,0,0,0.3);
 
+  @media (max-height: 569px) {
+    margin: auto auto 30px;
+  }
+
   .display {
     display: flex;
     justify-content: flex-end;
